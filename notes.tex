@@ -1,0 +1,814 @@
+% Created 2024-06-06 Thu 16:02
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper, 11pt]{article}
+                      \usepackage{minted}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[table, xcdraw]{xcolor}
+\definecolor{bblue}{HTML}{0645AD}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{colorlinks, linkcolor=blue, urlcolor=bblue}
+\usepackage{titling}
+\setlength{\droptitle}{-6em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\usepackage[stretch=10]{microtype}
+\usepackage{hyphenat}
+\usepackage{ragged2e}
+\usepackage{subfig} % Subfigures (not needed in Org I think)
+\usepackage{hyperref} % Links
+\usepackage{listings} % Code highlighting
+\usepackage[top=1in, bottom=1.25in, left=1.55in, right=1.55in]{geometry}
+\renewcommand{\baselinestretch}{1.15}
+\usepackage[explicit]{titlesec}
+\pretitle{\begin{center}\fontsize{20pt}{20pt}\selectfont}
+\posttitle{\par\end{center}}
+\preauthor{\begin{center}\vspace{-6bp}\fontsize{14pt}{14pt}\selectfont}
+\postauthor{\par\end{center}\vspace{-25bp}}
+\predate{\begin{center}\fontsize{12pt}{12pt}\selectfont}
+\postdate{\par\end{center}\vspace{0em}}
+\titlespacing\section{0pt}{5pt}{5pt} % left margin, space before section header, space after section header
+\titlespacing\subsection{0pt}{5pt}{-2pt} % left margin, space before subsection header, space after subsection header
+\titlespacing\subsubsection{0pt}{5pt}{-2pt} % left margin, space before subsection header, space after subsection header
+\usepackage{enumitem}
+\setlist{itemsep=-2pt} % or \setlist{noitemsep} to leave space around whole list
+\author{Prajwal Rao}
+\date{\today}
+\title{Interview Prep Notes}
+\hypersetup{
+ pdfauthor={Prajwal Rao},
+ pdftitle={Interview Prep Notes},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Image processing 101}
+\label{sec:org496bfb5}
+\subsection{Preparing input}
+\label{sec:org8d01d9a}
+\begin{verbatim}
+import cv2
+import numpy as np
+img = cv2.imread("./Image_Processing_100_Questions/Question_01_10/imori.jpg")
+print(img)
+\end{verbatim}
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+ [[214 154 130]
+  [187 130 109]
+  [176 124 112]
+  \ldots{}
+  [185 117  94]
+  [151  98  71]
+  [116  70  39]]]]]
+[[file:[[[132  80  67]
+  [104  55  39]
+  [100  54  36]
+  \ldots{}
+  [175 109 110]
+  [134  88  70]
+  [163 126 100]]
+
+[[140  88  71]
+ [117  65  52]
+ [106  54  47]
+ \ldots{}
+ [177 139 135]
+ [176 137 123]
+ [152 110  91]]
+
+[[137  85  69]
+ [131  77  66]
+ [119  67  60]
+ \ldots{}
+ [207 155 148]
+ [232 179 159]
+ [161 104  82]]
+
+\ldots{}
+
+[[231 172 152]
+ [153  97  80]
+ [160 107  97]
+ \ldots{}
+ [107  55  38]
+ [101  60  38]
+ [ 93  59  36]]
+
+[[255 198 176]
+ [172 114  95]
+ [168 116 104]
+ \ldots{}
+ [150  76  58]
+ [119  59  35]
+ [112  58  33]]
+
+[[214 154 130]
+ [187 130 109]
+ [176 124 112]
+ \ldots{}
+ [185 117  94]
+ [151  98  71]
+ [116  70  39]]]]]
+\subsection{Preparing output}
+\label{sec:org5dd47b5}
+\begin{verbatim}
+def save_output(fname, image):
+    cv2.imwrite(fname, image)
+    return fname
+\end{verbatim}
+\subsection{Otsu Thresholding}
+\label{sec:org09de26b}
+\subsection{BGR to HSV}
+\label{sec:org6b41493}
+Fist the RGB values are normalized by dividing by \(255\). Therefore, \(R\prime = R/255\), \(G\prime = G/255\), \(B\prime = B/255\).
+Then we calculate \(C_{max}\) and \(C_{min}\). Now \(\Delta = C_{max} - C_{min}\).
+To calculate:
+\[C_{max} = max(R\prime, G\prime, B\prime)\]
+\[C_{min} = min(R\prime, G\prime, B\prime)\]
+
+\(C_{max}\) and \(C_{min}\) are the largest and smallest of \(R\), \(G\) and \(B\) respectively.
+
+For \textbf{hue} calculation
+If \(C_{max} = R\prime\), then,
+\[H = 60\textdegree \times (\frac{G\prime - B\prime}{\Delta} mod 6)\]
+If \(C_{max} = G\prime\), then,
+\[H = 60\textdegree \times (\frac{B\prime - R\prime}{\Delta} + 2)\]
+If \(C_{max} = B\prime\), then,
+\[H = 60\textdegree \times (\frac{R\prime - G\prime}{\Delta} + 4)\]
+
+For \textbf{saturation} calculation,
+if \(C_{max} = 0\),
+\[S = 0\]
+else if \(C_{max} \ne 0\),
+\[S = \frac{\Delta}{C_{max}}\]
+
+For value calculation,
+\[V = C_{max}\]
+\subsection{Discretization of Color}
+\label{sec:orgd3d798b}
+Refers to the quantization of color
+\begin{itemize}
+\item Find the quantization levels, here we use 4
+\item Get the ranges for example for 4 levels: \((-1, 63)\), \((64, 127)\), \((127, 191)\), \((191, 255)\)
+\begin{verbatim}
+out = img.copy()
+for i in range(4):
+    ind = np.where(((64*i-1) <=out) & (out < (64*(i+1)-1)))
+    out[ind] = 32* (2*i+1)
+
+fname = save_output("q6.jpg", out)
+fname
+\end{verbatim}
+
+\item Find the midpoint of each quantization levels: \(32\), \(96\), \(122\)
+\item The Value of output is these values where the older values occur in that range
+\end{itemize}
+\subsection{Average pooling}
+\label{sec:orga7f995b}
+Image avg pooling keeps its size the same.
+We can avg/max pool image by doing it in each dim separately in \(x\timesy\)
+\begin{itemize}
+\item First image chunks \(Nh\) and \(Nw\)
+\end{itemize}
+\begin{verbatim}
+out = img.copy()
+H, W, C = img.shape
+G = 8
+Nh = int(H / G)
+Nw = int(W / G)
+\end{verbatim}
+
+\begin{itemize}
+\item Then do the pooling
+\end{itemize}
+\begin{verbatim}
+for y in range(Nh):
+    for x in range(Nw):
+        for c in range(C):
+            out[G*y:G*(y+1),
+                G*x:G*(x+1),
+                c] = np.max(out[G*y:G*(y+1),
+                             G*x:G*(x+1),
+                             c])
+fname = save_output("q8.jpg", out)
+fname
+\end{verbatim}
+\subsection{Gaussian filter}
+\label{sec:orge3d8d86}
+The formula for gaussian filter is
+\[G(x, y) = \frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{x^{2}+y^{2}}{2\sigma^{2}}}\]
+\begin{itemize}
+\item First we have to set the filter parameters: size and \(\sigma\)
+\end{itemize}
+\begin{verbatim}
+K_size = 3
+sigma = 1.3
+\end{verbatim}
+
+\begin{itemize}
+\item Do zero padding of the kernel size on each side
+\begin{verbatim}
+out = img.copy()
+H, W, C = img.shape
+pad = K_size // 2
+out = np.zeros([H+pad*2, W+pad*2, 3], dtype=np.float32)
+out[pad:pad+H, pad:pad+W] = img.copy().astype(np.float32)
+\end{verbatim}
+
+\item Create the filter using the formula \ref{gauss_eq}.
+\begin{verbatim}
+K = np.zeros([K_size, K_size], dtype=np.float32)
+for x in range(-pad, -pad+K_size):
+    for y in range(-pad, -pad+K_size):
+        K[y+pad, x+pad] = np.exp(-(x**2+y**2)/(2*(sigma**2)))
+K /= (sigma*np.sqrt(2*np.pi))
+K /= K.sum()
+print(K)
+\end{verbatim}
+[[file:[[0.08941182 0.12019445 0.08941182]
+ [0.12019445 0.1615749  0.12019445]
+ [0.08941182 0.12019445 0.08941182]]]]
+[[file:[[0.08941182 0.12019445 0.08941182]
+ [0.12019445 0.1615749  0.12019445]
+ [0.08941182 0.12019445 0.08941182]]]]
+\item Run this filter on the image and save results
+\begin{verbatim}
+for y in range(H):
+    for x in range(W):
+        for c in range(C):
+            out[pad+y, pad+x, c] = np.sum(K* out[y:y+K_size, x:x+K_size, c])
+out = out[pad:pad+H, pad:pad+W].astype(np.uint8)
+fname = save_output("q9.jpg", out)
+fname
+\end{verbatim}
+\end{itemize}
+\subsection{Median filter}
+\label{sec:orgcfc4a66}
+\begin{itemize}
+\item Do zero padding of the kernel size on each side
+\begin{verbatim}
+K_size = 3
+out = img.copy()
+H, W, C = img.shape
+pad = K_size // 2
+out = np.zeros([H+pad*2, W+pad*2, C], dtype=np.float32)
+out[pad:pad+H, pad:pad+W] = img.copy().astype(np.float32)
+\end{verbatim}
+\item Run the filter over image using \texttt{np.median}
+\begin{verbatim}
+for y in range(H):
+    for x in range(W):
+        for c in range(C):
+            out[pad+y, pad+x, c] = np.median(out[y:y+K_size, x:x+K_size, c])
+out = out[pad:pad+H, pad:pad+W].astype(np.uint8)
+fname = save_output("q10.jpg", out)
+fname
+\end{verbatim}
+\end{itemize}
+\subsection{Smoothing filter}
+\label{sec:org3c6e8db}
+\begin{itemize}
+\item Do zero padding of kernel size on each side
+\begin{verbatim}
+K_size = 3
+out = img.copy()
+H, W, C = img.shape
+pad = K_size // 2
+out = np.zeros([H+pad*2, W+pad*2, C], dtype=np.float32)
+out[pad:pad+H, pad:pad+W] = img.copy().astype(np.float32)
+tmp = out.copy()
+
+for y in range(H):
+    for x in range(W):
+        for c in range(C):
+            out[pad+y, pad+x, c] = np.mean(tmp[y:y+K_size, x:x+K_size, c])
+out = out[pad:pad+H, pad:pad+W].astype(np.uint8)
+fname = save_output("q11.jpg", out)
+fname
+\end{verbatim}
+\end{itemize}
+\subsection{Motion Filter}
+\label{sec:orge17f90c}
+\subsection{Max Min filter}
+\label{sec:org3243c69}
+\subsection{Differential filter}
+\label{sec:org4abe449}
+\subsection{Sobel Filter}
+\label{sec:org7145d1f}
+\subsection{Prewitt Filter}
+\label{sec:orgbd093e0}
+\subsection{Laplacian Filter}
+\label{sec:org187f1b4}
+\subsection{Emboss Filter}
+\label{sec:org6ae6675}
+\subsection{Log Filter}
+\label{sec:org68c888e}
+\subsection{Histogram display}
+\label{sec:org613a87f}
+\begin{itemize}
+\item Histogram graph depicts the frequency of pixels.
+\begin{verbatim}
+import matplotlib.pyplot as plt
+img_dark = cv2.imread("./Image_Processing_100_Questions/Question_11_20/imori_dark.jpg").astype(np.float32)
+plt.hist(img_dark.ravel(), bins=255, rwidth=0.8, range=(0, 255))
+plt.savefig("q20.jpg")
+"q20.jpg"
+\end{verbatim}
+\end{itemize}
+\subsection{Histogram normalization}
+\label{sec:orgcff03b1}
+\begin{itemize}
+\item Get the histogram of the greyscale image
+\item calcu
+\end{itemize}
+\end{document}

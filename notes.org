@@ -1,0 +1,217 @@
+#+title: Interview Prep Notes
+#+PROPERTY: header-args:python :exports both :session :results file link
+# #+LATEX_HEADER: \usepackage{minted}
+#+SETUPFILE: ~/Dropbox/org/jake-latex-standard.setup
+
+* Image processing 101
+** Preparing input
+#+NAME: input_img
+#+begin_src python :results output pp
+import cv2
+import numpy as np
+img = cv2.imread("./Image_Processing_100_Questions/Question_01_10/imori.jpg")
+print(img)
+#+end_src
+
+** Preparing output
+#+begin_src python :results silent
+def save_output(fname, image):
+    cv2.imwrite(fname, image)
+    return fname
+#+end_src
+
+
+** Otsu Thresholding
+** BGR to HSV
+Fist the RGB values are normalized by dividing by $255$. Therefore, $R\prime = R/255$, $G\prime = G/255$, $B\prime = B/255$.
+Then we calculate $C_{max}$ and $C_{min}$. Now $\Delta = C_{max} - C_{min}$.
+To calculate:
+\[C_{max} = max(R\prime, G\prime, B\prime)\]
+\[C_{min} = min(R\prime, G\prime, B\prime)\]
+
+$C_{max}$ and $C_{min}$ are the largest and smallest of $R$, $G$ and $B$ respectively.
+
+For *hue* calculation
+If $C_{max} = R\prime$, then,
+\[H = 60\textdegree \times (\frac{G\prime - B\prime}{\Delta} mod 6)\]
+If $C_{max} = G\prime$, then,
+\[H = 60\textdegree \times (\frac{B\prime - R\prime}{\Delta} + 2)\]
+If $C_{max} = B\prime$, then,
+\[H = 60\textdegree \times (\frac{R\prime - G\prime}{\Delta} + 4)\]
+
+For *saturation* calculation,
+if $C_{max} = 0$,
+\[S = 0\]
+else if $C_{max} \ne 0$,
+\[S = \frac{\Delta}{C_{max}}\]
+
+For value calculation,
+\[V = C_{max}\]
+** Discretization of Color
+Refers to the quantization of color
+- Find the quantization levels, here we use 4
+- Get the ranges for example for 4 levels: $(-1, 63)$, $(64, 127)$, $(127, 191)$, $(191, 255)$
+  #+begin_src python
+out = img.copy()
+for i in range(4):
+    ind = np.where(((64*i-1) <=out) & (out < (64*(i+1)-1)))
+    out[ind] = 32* (2*i+1)
+
+fname = save_output("q6.jpg", out)
+fname
+  #+end_src
+
+  #+RESULTS:
+  [[file:q6.jpg]]
+
+- Find the midpoint of each quantization levels: $32$, $96$, $122$
+- The Value of output is these values where the older values occur in that range
+** Average pooling
+Image avg pooling keeps its size the same.
+We can avg/max pool image by doing it in each dim separately in $x\timesy$
+- First image chunks $Nh$ and $Nw$
+#+begin_src python :results silent
+out = img.copy()
+H, W, C = img.shape
+G = 8
+Nh = int(H / G)
+Nw = int(W / G)
+#+end_src
+
+- Then do the pooling
+#+begin_src python
+for y in range(Nh):
+    for x in range(Nw):
+        for c in range(C):
+            out[G*y:G*(y+1),
+                G*x:G*(x+1),
+                c] = np.max(out[G*y:G*(y+1),
+                             G*x:G*(x+1),
+                             c])
+fname = save_output("q8.jpg", out)
+fname
+#+end_src
+
+#+RESULTS:
+[[file:q8.jpg]]
+
+
+** Gaussian filter
+The formula for gaussian filter is
+#+NAME: gauss_eq
+\[G(x, y) = \frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{x^{2}+y^{2}}{2\sigma^{2}}}\]
+- First we have to set the filter parameters: size and $\sigma$
+#+begin_src python :results silent
+K_size = 3
+sigma = 1.3
+#+end_src
+
+- Do zero padding of the kernel size on each side
+  #+begin_src python :results silent
+out = img.copy()
+H, W, C = img.shape
+pad = K_size // 2
+out = np.zeros([H+pad*2, W+pad*2, 3], dtype=np.float32)
+out[pad:pad+H, pad:pad+W] = img.copy().astype(np.float32)
+  #+end_src
+
+- Create the filter using the formula [[gauss_eq]].
+  #+begin_src python :results replace value
+K = np.zeros([K_size, K_size], dtype=np.float32)
+for x in range(-pad, -pad+K_size):
+    for y in range(-pad, -pad+K_size):
+        K[y+pad, x+pad] = np.exp(-(x**2+y**2)/(2*(sigma**2)))
+K /= (sigma*np.sqrt(2*np.pi))
+K /= K.sum()
+print(K)
+  #+end_src
+
+  #+RESULTS:
+  [[file:None]]
+  [[file:[[0.08941182 0.12019445 0.08941182]
+   [0.12019445 0.1615749  0.12019445]
+   [0.08941182 0.12019445 0.08941182]]]]
+  [[file:[[0.08941182 0.12019445 0.08941182]
+   [0.12019445 0.1615749  0.12019445]
+   [0.08941182 0.12019445 0.08941182]]]]
+- Run this filter on the image and save results
+  #+begin_src python
+for y in range(H):
+    for x in range(W):
+        for c in range(C):
+            out[pad+y, pad+x, c] = np.sum(K* out[y:y+K_size, x:x+K_size, c])
+out = out[pad:pad+H, pad:pad+W].astype(np.uint8)
+fname = save_output("q9.jpg", out)
+fname
+  #+end_src
+
+  #+RESULTS:
+  [[file:q9.jpg]]
+** Median filter
+- Do zero padding of the kernel size on each side
+  #+begin_src python :results silent
+K_size = 3
+out = img.copy()
+H, W, C = img.shape
+pad = K_size // 2
+out = np.zeros([H+pad*2, W+pad*2, C], dtype=np.float32)
+out[pad:pad+H, pad:pad+W] = img.copy().astype(np.float32)
+  #+end_src
+- Run the filter over image using =np.median=
+  #+begin_src python
+for y in range(H):
+    for x in range(W):
+        for c in range(C):
+            out[pad+y, pad+x, c] = np.median(out[y:y+K_size, x:x+K_size, c])
+out = out[pad:pad+H, pad:pad+W].astype(np.uint8)
+fname = save_output("q10.jpg", out)
+fname
+  #+end_src
+
+  #+RESULTS:
+  [[file:q10.jpg]]
+** Smoothing filter
+- Do zero padding of kernel size on each side
+  #+begin_src python
+K_size = 3
+out = img.copy()
+H, W, C = img.shape
+pad = K_size // 2
+out = np.zeros([H+pad*2, W+pad*2, C], dtype=np.float32)
+out[pad:pad+H, pad:pad+W] = img.copy().astype(np.float32)
+tmp = out.copy()
+
+for y in range(H):
+    for x in range(W):
+        for c in range(C):
+            out[pad+y, pad+x, c] = np.mean(tmp[y:y+K_size, x:x+K_size, c])
+out = out[pad:pad+H, pad:pad+W].astype(np.uint8)
+fname = save_output("q11.jpg", out)
+fname
+  #+end_src
+
+  #+RESULTS:
+  [[file:q11.jpg]]
+** Motion Filter
+** Max Min filter
+** Differential filter
+** Sobel Filter
+** Prewitt Filter
+** Laplacian Filter
+** Emboss Filter
+** Log Filter
+** Histogram display
+- Histogram graph depicts the frequency of pixels.
+  #+begin_src python
+import matplotlib.pyplot as plt
+img_dark = cv2.imread("./Image_Processing_100_Questions/Question_11_20/imori_dark.jpg").astype(np.float32)
+plt.hist(img_dark.ravel(), bins=255, rwidth=0.8, range=(0, 255))
+plt.savefig("q20.jpg")
+"q20.jpg"
+  #+end_src
+
+  #+RESULTS:
+  [[file:q20.jpg]]
+** Histogram normalization
+- Get the histogram of the greyscale image
+- calcu
