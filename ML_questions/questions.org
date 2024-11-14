@@ -1,0 +1,104 @@
+#+title: ML Interview Preparation
+
+* The [[id:b625874f-2e0e-4f63-ab56-4b0f5540cc3b][STAR Method]]
+The STAR method is an interview technique that gives a straightforward format that can be used to tell a story by laying out the story, task, action and result.
+* List of interview questions
+** General
+- Explain Precision Recall and F1 Score
+-
+** ByteDance
+- [[id:c233ca94-38fa-49c5-a2ed-7c41ad1460af][Logistic Regression]]
+- [[id:e64935e5-27de-490e-9f2d-ad1b0f29dba3][Types of Losses]]
+- Convex Optimization
+- Bias Variance Tradeoff
+- Overfitting and Underfitting
+- Support Vector Machines (SVM)
+- What if the dataset is not Linearly Separable
+- Causal Inference
+- Attention Mechanism
+- Long Tailed Data
+- AUC Definition
+- Gradient Descent
+- Vanishing Gradients
+** Google
+- What are the most important algorithms, programming terms, and theories to understand as a machine learning engineer?
+- Can you describe a machine learning project you have worked on and the impact it had?
+- How would you explain machine learning to someone who doesn't understand it?
+- How to write a neural network in PyTorch
+- When do you deal with overfitting (dropout, weight decay, augmentation)?
+- How would you build, train, and deploy a system that detects if multimedia and/or ad content violates terms or contains offensive materials
+- Design autocomplete and/or spell check on a mobile device.
+- Design autocomplete and/or automatic responses for email.
+- Design the YouTube recommendation system.
+- How would you optimize prediction throughput for an RNN-based model?
+- What loss function will you optimize and why?
+- How will you avoid bias and feedback loops?
+- How will you handle a corrupt model or an incorrect training batch?
+** Meta
+- Design a personalized news ranking system.
+- Design a product recommendation system.
+- Design an evaluation framework for ads ranking.
+* Coding Questions
+** ByteDance
+** Google
+Question categories at Google
+- Graphs/trees questions mostly (39%)
+- Arrays/strings (26%)
+- Rynamic programming (12%)
+- Recursion (12%)
+- Geometry/Math (11%)
+
+Types of questions
+- Efficiently sort a list of numbers
+- Design a task scheduler in Python
+- Reverse a string
+- Merge K sorted linked list
+- Given a binary tree, find the maximum path sum. The path may start and end at any node in the tree.
+- Given an encoded string, return its decoded string. (Solution)
+- Given two words (beginWord and endWord), and a dictionary's word list, find the length of the shortest transformation sequence from beginWord to endWord, such that: 1) Only one letter can be changed at a time, and 2) Each transformed word must exist in the word list. (Solution)
+- Given a matrix of N rows and M columns. From m[i][j], we can move to m[i+1][j], if m[i+1][j] > m[i][j], or can move to m[i][j+1] if m[i][j+1] > m[i][j]. The task is print longest path length if we start from (0, 0).
+- Implement a SnapshotArray that supports pre-defined interfaces
+- In a row of dominoes, A[i] and B[i] represent the top and bottom halves of the i-th domino.  (A domino is a tile with two numbers from 1 to 6 - one on each half of the tile.) We may rotate the i-th domino, so that A[i] and B[i] swap values. Return the minimum number of rotations so that all the values in A are the same, or all the values in B are the same. If it cannot be done, return -1.
+- Your friend is typing his name into a keyboard.  Sometimes, when typing a character c, the key might get long pressed, and the character will be typed 1 or more times. You examine the typed characters of the keyboard.  Return True if it is possible that it was your friend's name, with some characters (possibly none) being long pressed.
+- Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+- Given a list of query words, return the number of words that are stretchy.
+- Given a matrix and a target, return the number of non-empty submatrices that sum to target.
+- Given a rows x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+- Your car starts at position 0 and speed +1 on an infinite number line. (Your car can go into negative positions.) Your car drives automatically according to a sequence of instructions A (accelerate) and R (reverse)...Now for some target position, say the length of the shortest sequence of instructions to get there.
+- A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down). Find all strobogrammatic numbers that are of length = n.
+- Given a binary tree, find the length of the longest path where each node in the path has the same value. This path may or may not pass through the root. The length of path between two nodes is represented by the number of edges between them.
+- You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contains a single digit. Add the two numbers and return it as a linked list.
+** Meta
+Question categories at Meta
+- Arrays / Strings (38% of questions, most frequent)
+- Graphs / Trees (29%)
+- Dynamic Programming (18%)
+- Search / Sort (9%)
+- Linked lists (4%)
+- Stacks / Queues (2%, least frequent)
+
+Types of questions
+- Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+- Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+- Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+- Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+- Given an array of strings strs, group the anagrams together.
+- Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+- Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+- Given the root node of a binary search tree, return the sum of values of all nodes with value between L and R (inclusive).
+- Given a Binary Tree, convert it to a Circular Doubly Linked List (In-Place).
+- Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+- Given a binary tree, you need to compute the length of the diameter of the tree.
+- Serialize and deserialize a binary tree
+- Given a binary tree, find the maximum path sum.
+- Given a sorted dictionary (array of words) of an alien language, find order of characters in the language.
+- Check whether a given graph is Bipartite or not
+- Given a list of non-negative numbers and a target integer k, write a function to check if the array has a continuous subarray of size at least 2 that sums up to the multiple of k, that is, sums up to n*k where n is also an integer.
+- Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+- Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
+- You are given a list of non-negative integers, a1, a2, ..., an, and a target, S. Now you have 2 symbols + and -. For each integer, you should choose one from + and - as its new symbol. Find out how many ways to assign symbols to make sum of integers equal to target S.
+- We have a list of points on the plane.  Find the K closest points to the origin (0, 0).
+- Given two arrays, write a function to compute their intersection.
+- Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] find the minimum number of conference rooms required.
+- A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null. Return a deep copy of the list.
+- Implement the following operations of a queue using stacks. Note: see more details at the following link.
