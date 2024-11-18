@@ -4,33 +4,32 @@
 The STAR method is an interview technique that gives a straightforward format that can be used to tell a story by laying out the story, task, action and result.
 * List of interview questions
 ** General
-- Explain Precision Recall and F1 Score
--
+- Explain [[id:d7c585eb-a3ae-45e5-956e-253987f3fdaf][Precision]], [[id:292e173b-42e6-4341-b37a-4e28035a66cc][Recall]] and [[id:276a4433-a404-456b-bbc9-7f5544275676][F1 Score]]
 ** ByteDance
 - [[id:c233ca94-38fa-49c5-a2ed-7c41ad1460af][Logistic Regression]]
 - [[id:e64935e5-27de-490e-9f2d-ad1b0f29dba3][Types of Losses]]
-- Convex Optimization
-- Bias Variance Tradeoff
-- Overfitting and Underfitting
-- Support Vector Machines (SVM)
-- What if the dataset is not Linearly Separable
-- Causal Inference
-- Attention Mechanism
-- Long Tailed Data
-- AUC Definition
-- Gradient Descent
-- Vanishing Gradients
+- [[id:beb67fc9-8430-4b90-8532-d1100665cad5][Convex Optimization]]
+- [[id:1d8522c9-b39a-480b-89c5-6c0e40fa2a6e][Bias Variance Tradeoff]]
+- [[id:5e88eee3-0c35-46f9-a45e-716b9211bab0][Overfitting]] and [[id:76d4caa8-ac46-47f0-b10a-869f5766e70e][Underfitting]]
+- [[id:a96569f1-4ebf-4fbc-af13-0f0e24a38a1c][Support Vector Machines]] (SVM)
+- What if the dataset is not [[id:1b1b6e05-7b49-4956-8423-faf7af9a8aca][Linearly Separable]]
+- [[id:6147a933-8d2a-4ad2-afd2-5b86c6447942][Causal Inference]]
+- [[id:f30eb2c2-1358-4406-9279-a6ac348a04bf][Attention Mechanism]]
+- [[id:40355a82-b9ab-4e0c-b241-6250a9e98fb2][Long Tailed Data]]
+- [[id:dfbf116f-0b5c-4eb5-b364-e81beee8c92d][ROC]] and [[id:2b51432e-3811-4f9d-b61e-0fde393e78c5][AUC]] Definition
+- [[id:95fca8e7-de01-4056-8682-1ba683dc2a88][Gradient Descent]]
+- [[id:5f39b412-124f-4f98-b853-db98175a0fd4][Vanishing Gradients]]
 ** Google
 - What are the most important algorithms, programming terms, and theories to understand as a machine learning engineer?
 - Can you describe a machine learning project you have worked on and the impact it had?
 - How would you explain machine learning to someone who doesn't understand it?
 - How to write a neural network in PyTorch
-- When do you deal with overfitting (dropout, weight decay, augmentation)?
+- When do you deal with [[id:5e88eee3-0c35-46f9-a45e-716b9211bab0][overfitting]] (dropout, weight decay, [[id:48b2f18d-07b2-49e5-a698-0fa6f8428f7e][augmentation]])?
 - How would you build, train, and deploy a system that detects if multimedia and/or ad content violates terms or contains offensive materials
 - Design autocomplete and/or spell check on a mobile device.
 - Design autocomplete and/or automatic responses for email.
 - Design the YouTube recommendation system.
-- How would you optimize prediction throughput for an RNN-based model?
+- How would you optimize prediction throughput for an [[id:bcb392a9-435c-4e1a-9db6-d4110592dfc3][RNN-based model]]?
 - What loss function will you optimize and why?
 - How will you avoid bias and feedback loops?
 - How will you handle a corrupt model or an incorrect training batch?
@@ -44,7 +43,7 @@ The STAR method is an interview technique that gives a straightforward format th
 Question categories at Google
 - Graphs/trees questions mostly (39%)
 - Arrays/strings (26%)
-- Rynamic programming (12%)
+- Dynamic programming (12%)
 - Recursion (12%)
 - Geometry/Math (11%)
 
