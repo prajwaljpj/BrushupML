@@ -7,6 +7,8 @@ The STAR method is an interview technique that gives a straightforward format th
 - Explain [[id:d7c585eb-a3ae-45e5-956e-253987f3fdaf][Precision]], [[id:292e173b-42e6-4341-b37a-4e28035a66cc][Recall]] and [[id:276a4433-a404-456b-bbc9-7f5544275676][F1 Score]]
 - What is a [[id:3336d49f-db30-4b0e-a4eb-c69021a33d6c][Large Language Model]]
 - What are [[id:5f39b412-124f-4f98-b853-db98175a0fd4][vanishing gradients]]?
+- [[id:c98a7326-fc4f-4c45-899b-8e00e60e6483][LLM System Design]]
+- What is [[id:541da77c-62ba-4651-85f8-bc324abc07c5][regression]]?
 ** ByteDance
 - [[id:c233ca94-38fa-49c5-a2ed-7c41ad1460af][Logistic Regression]]
 - [[id:e64935e5-27de-490e-9f2d-ad1b0f29dba3][Types of Losses]]
