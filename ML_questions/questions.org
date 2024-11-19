@@ -5,6 +5,8 @@ The STAR method is an interview technique that gives a straightforward format th
 * List of interview questions
 ** General
 - Explain [[id:d7c585eb-a3ae-45e5-956e-253987f3fdaf][Precision]], [[id:292e173b-42e6-4341-b37a-4e28035a66cc][Recall]] and [[id:276a4433-a404-456b-bbc9-7f5544275676][F1 Score]]
+- What is a [[id:3336d49f-db30-4b0e-a4eb-c69021a33d6c][Large Language Model]]
+- What are [[id:5f39b412-124f-4f98-b853-db98175a0fd4][vanishing gradients]]?
 ** ByteDance
 - [[id:c233ca94-38fa-49c5-a2ed-7c41ad1460af][Logistic Regression]]
 - [[id:e64935e5-27de-490e-9f2d-ad1b0f29dba3][Types of Losses]]
@@ -21,6 +23,17 @@ The STAR method is an interview technique that gives a straightforward format th
 - [[id:5f39b412-124f-4f98-b853-db98175a0fd4][Vanishing Gradients]]
 ** Google
 - What are the most important algorithms, programming terms, and theories to understand as a machine learning engineer?
+  Supervised learning and unsupervised learning:
+  - Supervised Learning:
+    1) [[id:8f12389e-932b-4aeb-90f5-d5153b9e7ea9][KNN]]
+    2) [[id:15607721-dfd4-4519-8e06-2204c1f3d3e1][Naive Bayes]]
+    3) [[id:c233ca94-38fa-49c5-a2ed-7c41ad1460af][Logistic Regression]]
+    4) [[id:a96569f1-4ebf-4fbc-af13-0f0e24a38a1c][SVM]]
+    5) Neural Networks
+  - Unsupervised Learning:
+    1) [[id:92c25398-38b8-44d2-97bc-54f30e161fb7][Linear Regression]]
+    2) K means clustering
+    3) Principal Component Analysis (PCA)
 - Can you describe a machine learning project you have worked on and the impact it had?
 - How would you explain machine learning to someone who doesn't understand it?
 - How to write a neural network in PyTorch
